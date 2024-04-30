@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Recommendations for {{ search_name }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,500&amp;display=swap'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='found.css') }}">
+</head>
+<body>
+  <button onclick="window.history.back()">Back to Home Page</button>
+  <div class="movie">
+    <h2><u>Movie Recommendations for "{{ search_name }}"</u></h2>
+    <table class="movie_table" align="center">
+      <tr>
+        <th>Movie Title</th>
+        <th>Release Date</th>
+        <th>Similarity Score</th>
+      </tr>
+      <tbody class="table_body">
+        {% for i in range(10) %}
+        <tr>
+          <td><a href="{{ movie_homepage[i] }}" target="_blank">{{ movie_names[i] }}</a></td>
+          <td>{{ movie_releaseDate[i] }}</td>
+          <td>{{ movie_simScore[i][1] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+  </div>
+  <!-- partial -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js'></script>
+  <script src='https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js'></script>
+</body>
+</html>
